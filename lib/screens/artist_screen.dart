@@ -20,6 +20,22 @@ class _ArtistScreenState extends State<ArtistScreen> {
       appBar: AppBar(
         title: const Text('Mis Artistas de Spotify'),
       ),
+      body: Column(
+        children: [
+          TextField(
+
+          ),
+          TextField(
+            
+          ),
+          TextField(
+            
+          ),
+          TextField(
+            
+          ),
+        ],
+      ),
     );
   }
 }
