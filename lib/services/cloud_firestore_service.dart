@@ -22,4 +22,17 @@ class CloudFirestoreService {
           .toList();
     });
   }
+
+  Future<void> insertArtist(String collection, Map<String, dynamic> data) {
+    return _cloudFireStore.collection(collection).add(data);
+  }
+
+  Future<void> updateArtist(
+      String collection, String docId, Map<String, dynamic> data) {
+    return _cloudFireStore.collection(collection).doc(docId).update(data);
+  }
+
+  Future<void> deleteArtist(String collection, String docId) {
+    return _cloudFireStore.collection(collection).doc(docId).delete();
+  }
 }

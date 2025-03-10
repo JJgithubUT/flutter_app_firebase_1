@@ -42,6 +42,24 @@ class _ArtistScreenState extends State<ArtistScreen> {
             controller: _inicioController,
             decoration: const InputDecoration(labelText: 'Inicio'),
           ),
+          ElevatedButton(
+            onPressed: null,
+            child: const Text('Agregar artista'),
+          ),
+          Expanded(
+            child: StreamBuilder(
+              stream: _cloudFirestoreService.getArtists('artistas'),
+              builder: (context, AsyncSnapshot<List<ArtistModel>> snapshot) {
+                if ( snapshot.hasError ) {
+                  print('Error al obtener artistas: ${ snapshot.error }');
+                  return Text('Error: ${ snapshot.error }');
+                }
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                }
+              },
+            ),
+          ),
         ],
       ),
     );
