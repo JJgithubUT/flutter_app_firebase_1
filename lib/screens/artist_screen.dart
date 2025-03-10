@@ -57,6 +57,15 @@ class _ArtistScreenState extends State<ArtistScreen> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const CircularProgressIndicator();
                 }
+                return ListView(
+                  children: snapshot.data!.map( (ArtistModel artist) {
+                    return ListTile(
+                      title: Text(artist.name),
+                      subtitle: Text('Genero: ${ artist.genre }'),
+                      onTap: null,
+                    );
+                  }).toList(),
+                );
               },
             ),
           ),
