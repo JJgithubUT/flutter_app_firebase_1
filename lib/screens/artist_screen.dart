@@ -12,6 +12,10 @@ class ArtistScreen extends StatefulWidget {
 class _ArtistScreenState extends State<ArtistScreen> {
 
   final CloudFirestoreService _cloudFirestoreService = CloudFirestoreService();
+  final TextEditingController _nombreController = TextEditingController();
+  final TextEditingController _generoController = TextEditingController();
+  final TextEditingController _inicioController = TextEditingController();
+  final TextEditingController _albumsController = TextEditingController();
 
 
   @override
@@ -23,16 +27,20 @@ class _ArtistScreenState extends State<ArtistScreen> {
       body: Column(
         children: [
           TextField(
-
+            controller: _nombreController,
+            decoration: const InputDecoration(labelText: 'Nombre'),
           ),
           TextField(
-            
+            controller: _generoController,
+            decoration: const InputDecoration(labelText: 'Genero'),
           ),
           TextField(
-            
+            controller: _albumsController,
+            decoration: const InputDecoration(labelText: 'Albums'),
           ),
           TextField(
-            
+            controller: _inicioController,
+            decoration: const InputDecoration(labelText: 'Inicio'),
           ),
         ],
       ),
