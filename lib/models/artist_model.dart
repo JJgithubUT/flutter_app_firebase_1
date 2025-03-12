@@ -7,19 +7,17 @@ class ArtistModel {
   final int albums;
   final int start;
 
-  ArtistModel({
-    required this.id,
-    required this.name,
-    required this.genre,
-    required this.albums,
-    required this.start,
-  });
+  ArtistModel(
+      {required this.id,
+      required this.name,
+      required this.genre,
+      required this.albums,
+      required this.start});
 
   // Convertir un Artist a un Map
-
+  // Insertar un Artist en la base de datos
   Map<String, dynamic> toMap() {
     return {
-      //'id': id,
       'nombre': name,
       'genero': genre,
       'albums': albums,
@@ -36,5 +34,4 @@ class ArtistModel {
       start: doc['inicio'] as int,
     );
   }
-
 }
