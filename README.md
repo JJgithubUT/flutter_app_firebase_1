@@ -32,7 +32,7 @@ A new Flutter project.
 
 keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
 
-- Enter keystore password( llave del archivo generado ): 19421945
+- Enter keystore password( llave del archivo generado ): 19421945 // coltpaterson
 - Name: Juan
 - Org unit: TIADSM
 - Org unit2: TIADSM
@@ -69,3 +69,49 @@ Configuración de proyecto
 - flutter pub add firebase_auth
 
 - flutter pub add google_sign_in
+
+### PASOS 'ULTIMOS'
+
+flutter clean
+
+flutter pub get
+
+flutter pub outdated
+
+cd android
+
+./gradlew signinReport
+
+### IMPORTANTE
+
+1) LAS KEYS SE GENERAN CON `JAVA` (importante generarlas con la version que este en el build.gradle)
+2) REVISAR VARIABLES DEL ENTORNO, VERIFICAR VERSIÓN DE JAVA.
+    CHECAR VAR JAVA_HOME (SESIÓN DE SISTEMA)
+3) LA VERSIÓN DE JAVA (build grade) DEFINE LA VERSIÓN DE FLUTTER Y DE GRADLE (kotlin)
+    -- JAVA21 => FLUTTER 31
+    -- JAVA17 => FLUTTER 29
+4) REVISAR QUE ANDROID STUDIO ESTÉ ACTUALIZANDO
+5) ACTUALIZAR FLUTTER
+    -- VER LA VERSION: flutter --version
+    -- ACTUALIZAR flutter upgrade --force
+(5.1) - En caso de no poder actualizar a otra versión más avanzada, ejecutar:
+    -- flutter channel beta
+    -- flutter upgrade
+    -- flutter channel stable
+    -- flutter upgrade
+    - Por último, antes de ir al siguiente punto, actualizar flutter:
+    -- `flutter upgrade --force`
+6) EL ARCHIVO .keystore DEBE ESTAR EN:
+    -- tu_proyecto/android/app, Y REVISAR QUE LOS VALORES ESTÉN EN LA CONSOLA DE GOOGLE.
+    TAMBIÉN PUEDES ACTUALIZAR google.services.json
+7) VERIFICAR QUE LAS HUELLAS FUNCIONEN CON `gradlew signinReport` => BUILD SUCCESFUL
+    -- ir a /android y ejecutar `./gradlew sininReport` en powershell de Windows
+8) SI TODO ESTÁ BIEN, EJECUTAR:
+    -- flutter clean
+    -- flutter pub get
+    -- flutter pub outdated (marca dependencias obsoletas)
+9) DESINTALAR LA APP EN EL EMULADOR:
+    -- adb uninstall com.example.tu.proyecto
+10) CORRER EL PROYECTO, SE PUEDE CORRER CON
+    -- flutter run --release
+    -- (CON ESTE COMANDO LA APP SE DETIENE CON ``Alt + 0``)
